@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     environment {
-        IMAGE_NAME = "registry.gitlab.com/autyauth1/softdevcicd"
+        IMAGE_NAME = "https://hub.docker.com/repository/docker/51mpp/test1/general"
     }
 
     stages{
@@ -81,12 +81,12 @@ pipeline{
             }
             steps{
                     // push the image to the gitlab registry with credentials
-                    withCredentials([usernamePassword(credentialsId: '86130d73-f735-4fd7-b9c7-6922adffce72', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    withCredentials([usernamePassword(credentialsId: 'decf1751-1114-490d-8ad0-3488025ffa77', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh 'docker login -u ${USERNAME} -p ${PASSWORD} registry.gitlab.com'
-                        sh 'docker push registry.gitlab.com/autyauth1/softdevcicd'
+                        sh 'docker push https://hub.docker.com/repository/docker/51mpp/test1/general'
                     }
-                    sh 'docker rmi -f registry.gitlab.com/autyauth1/softdevcicd:latest'
-                    // sh "docker push registry.gitlab.com/autyauth1/softdevcicd"
+                    sh 'docker rmi -f https://hub.docker.com/repository/docker/51mpp/test1/general:latest'
+                    // sh "docker push https://hub.docker.com/repository/docker/51mpp/test1/general"
             }
         }
         stage('Clean Workspace') {
@@ -105,7 +105,7 @@ pipeline{
             steps {
                     withCredentials([usernamePassword(credentialsId: '86130d73-f735-4fd7-b9c7-6922adffce72', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh 'docker login -u ${USERNAME} -p ${PASSWORD} registry.gitlab.com'
-                        sh 'docker pull registry.gitlab.com/autyauth1/softdevcicd'
+                        sh 'docker pull https://hub.docker.com/repository/docker/51mpp/test1/general'
                     }
 
             }
