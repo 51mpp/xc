@@ -82,6 +82,7 @@ pipeline{
             steps {
                 // Push the image to the Docker Hub registry with credentials
                 withCredentials([usernamePassword(credentialsId: '095a317d-a951-411f-8be6-6dce905b9986', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    // sh "echo $PASSWORD | docker login -u $USERNAME --password-stdin"
                     sh "echo "$PASSWORD" | docker login -u "$USERNAME" --password-stdin"
                     sh "docker tag 51mpp/test1:latest 51mpp/test1:latest"
                     sh "docker push 51mpp/test1:latest"
