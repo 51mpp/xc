@@ -106,7 +106,7 @@ pipeline{
             }
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'd2aa59b5-0231-43f0-98ef-a74ff32918ba', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    withCredentials([usernamePassword(credentialsId: '095a317d-a951-411f-8be6-6dce905b9986', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh "echo $PASSWORD | docker login -u $USERNAME --password-stdin"
                         sh 'docker pull 51mpp/test1'
                     }
