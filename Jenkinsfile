@@ -71,7 +71,7 @@ pipeline{
             }
             steps {
                 // sh "cd ./robottestapi && robot ./plus.robot"
-                sh "cd ./robottestapi && python3 -m robot ./plus.robot"
+                sh "cd ./RobotTestScript && python3 -m robot ./plus.robot"
                 
             }
         }
