@@ -104,7 +104,7 @@ pipeline{
                 label 'vm3-pre-prod'
             }
             steps {
-                    withCredentials([usernamePassword(credentialsId: '86130d73-f735-4fd7-b9c7-6922adffce72', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    withCredentials([usernamePassword(credentialsId: '095a317d-a951-411f-8be6-6dce905b9986', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh "echo dckr_pat_vY37ckbwk-y26PjhsxbZ9CLgjKM| docker login -u $USERNAME --password-stdin"
                         sh 'docker pull 51mpp/test1'
                     }
