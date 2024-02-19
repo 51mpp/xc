@@ -105,7 +105,7 @@ pipeline{
             }
             steps {
                     withCredentials([usernamePassword(credentialsId: '095a317d-a951-411f-8be6-6dce905b9986', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        sh "dckr_pat_In1hkLqpMhgSP4asa_YFJxYHNg0 docker login -u $USERNAME --password-stdin"
+                        sh "dckr_pat_In1hkLqpMhgSP4asa_YFJxYHNg0 docker login -u 51mpp --password-stdin"
                         sh 'docker pull 51mpp/test1'
                     }
 
