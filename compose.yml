@@ -2,6 +2,6 @@ version: '3.8'
 services:
   web:
     build: ./app
-    image: registry.gitlab.com/autyauth1/softdevcicd
+    image: 51mpp/test1
     ports:
       - "9080:5000"
