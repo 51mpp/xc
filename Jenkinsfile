@@ -59,7 +59,10 @@ pipeline{
             }
             steps {
                 sh "rm -rf ./robottestapi"
-                sh 'git clone https://github.com/SDPP-Group/RobotTestScript.git'
+                withCredentials([gitUsernamePassword(credentialsId: '86130d73-f735-4fd7-b9c7-6922adffce72', gitToolName: 'git-tool')]) {
+                    // Use withCredentials block to securely access credentials
+                    sh 'git clone https://github.com/SDPP-Group/RobotTestScript.git'
+                }
             }
         }
         stage("Run Robot Test") {
