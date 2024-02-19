@@ -105,8 +105,8 @@ pipeline{
             }
             steps {
                     withCredentials([usernamePassword(credentialsId: '86130d73-f735-4fd7-b9c7-6922adffce72', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        sh 'docker login -u ${USERNAME} -p ${PASSWORD} registry.gitlab.com'
-                        sh 'docker pull https://hub.docker.com/repository/docker/51mpp/test1/general'
+                        sh "echo dckr_pat_vY37ckbwk-y26PjhsxbZ9CLgjKM| docker login -u $USERNAME --password-stdin"
+                        sh 'docker pull 51mpp/test1'
                     }
 
             }
