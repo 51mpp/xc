@@ -83,7 +83,7 @@ pipeline{
                     // push the image to the gitlab registry with credentials
                     withCredentials([usernamePassword(credentialsId: 'decf1751-1114-490d-8ad0-3488025ffa77', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh 'docker login -u ${USERNAME} -p ${PASSWORD} registry.gitlab.com'
-                        sh 'docker push docker push 51mpp/test1'
+                        sh 'docker push 51mpp/test1'
                     }
                     sh 'docker rmi -f docker push 51mpp/test1'
                     // sh "docker push https://hub.docker.com/repository/docker/51mpp/test1/general"
