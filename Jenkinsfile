@@ -81,7 +81,7 @@ pipeline{
             }
             steps{
                     // push the image to the gitlab registry with credentials
-                    withCredentials([usernamePassword(credentialsId: 'decf1751-1114-490d-8ad0-3488025ffa77', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    withCredentials([usernamePassword(credentialsId: '095a317d-a951-411f-8be6-6dce905b9986', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh 'docker login -u ${USERNAME} -p ${PASSWORD} registry.gitlab.com'
                         sh 'docker tag 51mpp/test1 51mpp/test1:latest    '
                         sh 'docker push 51mpp/test1:latest'
