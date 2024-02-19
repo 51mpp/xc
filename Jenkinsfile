@@ -76,20 +76,18 @@ pipeline{
             }
         }
         stage("Push Image") {
-            agent{
+            agent {
                 label 'vm2-tester'
             }
-            steps{
-                    // push the image to the gitlab registry with credentials
-                    withCredentials([usernamePassword(credentialsId: '095a317d-a951-411f-8be6-6dce905b9986', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                        // sh 'docker login -u ${USERNAME}'
-                        // sh'${PASSWORD}'
-                        sh 'echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin'
-                        sh 'docker tag 51mpp/test1 51mpp/test1:latest    '
-                        sh 'docker push 51mpp/test1:latest'
-                    }
-                    sh 'docker rmi -f docker push 51mpp/test1'
-                    // sh "docker push https://hub.docker.com/repository/docker/51mpp/test1/general"
+            steps {
+                // Push the image to the Docker Hub registry with credentials
+                withCredentials([usernamePassword(credentialsId: '095a317d-a951-411f-8be6-6dce905b9986', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh "echo $PASSWORD | docker login -u $USERNAME --password-stdin"
+                    sh "docker tag 51mpp/test1:latest 51mpp/test1:latest"
+                    sh "docker push 51mpp/test1:latest"
+                }
+                // Remove the local image after pushing it to the registry
+                sh "docker rmi -f 51mpp/test1:latest"
             }
         }
         stage('Clean Workspace') {
