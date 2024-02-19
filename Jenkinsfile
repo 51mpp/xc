@@ -61,7 +61,7 @@ pipeline{
                 sh "rm -rf ./robottestapi"
                 withCredentials([gitUsernamePassword(credentialsId: '86130d73-f735-4fd7-b9c7-6922adffce72', gitToolName: 'git-tool')]) {
                     // Use withCredentials block to securely access credentials
-                    sh 'git clone https://gitlab.com/autyauth1/robottestapi.git'
+                    sh 'git clone https://github.com/SDPP-Group/RobotTestScript.git'
                 }
             }
         }
